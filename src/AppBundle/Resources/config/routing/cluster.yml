@@ -11,7 +11,7 @@ app_cluster_show:
         _controller: 'AppBundle:Resource:show'
         _entity: '%app.cluster.class%'
     requirements:
-        id: \d
+        id: \d+
     methods: ['GET']
 
 app_cluster_create:
@@ -29,7 +29,7 @@ app_cluster_update:
         _entity: '%app.cluster.class%'
         _redirect: 'app_cluster_index'
     requirements:
-        id: \d
+        id: \d+
     methods: ['GET', 'PUT']
 
 app_cluster_delete:
@@ -39,5 +39,5 @@ app_cluster_delete:
         _entity: '%app.cluster.class%'
         _redirect: 'app_cluster_index'
     requirements:
-        id: \d
+        id: \d+
     methods: ['GET', 'DELETE']
