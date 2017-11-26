@@ -35,7 +35,7 @@ class Note implements ResourceInterface
 
     /**
      * @var string
-     * @ORM\Column(type="text")
+     * @ORM\Column(type="text", nullable=true)
      */
     protected $content;
 
