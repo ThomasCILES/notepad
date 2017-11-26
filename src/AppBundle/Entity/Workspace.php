@@ -7,6 +7,7 @@
 
 namespace AppBundle\Entity;
 
+use AppBundle\Model\ResourceInterface;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 
@@ -16,7 +17,7 @@ use Doctrine\Common\Collections\ArrayCollection;
  * @package AppBundle\Entity
  * @ORM\Entity()
  */
-class Workspace
+class Workspace implements ResourceInterface
 {
     /**
      * @var int
@@ -42,7 +43,13 @@ class Workspace
     }
 
     /**
-     * @return int
+     * @var string
+     * @ORM\Column(type="string", length=255)
+     */
+    protected $title;
+
+    /**
+     * @inheritdoc
      */
     public function getId()
     {
@@ -82,5 +89,21 @@ class Workspace
     public function getClusters()
     {
         return $this->clusters;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getTitle()
+    {
+        return $this->title;
+    }
+
+    /**
+     * @param mixed $title
+     */
+    public function setTitle($title)
+    {
+        $this->title = $title;
     }
 }

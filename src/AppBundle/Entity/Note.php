@@ -6,6 +6,7 @@
  */
 namespace AppBundle\Entity;
 
+use AppBundle\Model\ResourceInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -15,7 +16,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Table(name="note")
  * @ORM\Entity()
  */
-class Note
+class Note implements ResourceInterface
 {
     /**
      * @var int
@@ -34,7 +35,7 @@ class Note
 
     /**
      * @var string
-     * @ORM\Column(type="text")
+     * @ORM\Column(type="text", nullable=true)
      */
     protected $content;
 
@@ -53,9 +54,7 @@ class Note
     }
 
     /**
-     * Get id
-     *
-     * @return int
+     * @inheritdoc
      */
     public function getId()
     {
