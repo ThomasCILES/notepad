@@ -27,6 +27,18 @@ class Note
     private $id;
 
     /**
+     * @var string
+     * @ORM\Column(type="string", length=255)
+     */
+    protected $title;
+
+    /**
+     * @var string
+     * @ORM\Column(type="text")
+     */
+    protected $content;
+
+    /**
      * @var \Doctrine\Common\Collections\ArrayCollection
      * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Cluster", inversedBy="notes", orphanRemoval=true)
      */
@@ -82,5 +94,37 @@ class Note
     public function getClusters()
     {
         return $this->clusters;
+    }
+
+    /**
+     * @return string
+     */
+    public function getTitle()
+    {
+        return $this->title;
+    }
+
+    /**
+     * @param string $title
+     */
+    public function setTitle($title)
+    {
+        $this->title = $title;
+    }
+
+    /**
+     * @return string
+     */
+    public function getContent()
+    {
+        return $this->content;
+    }
+
+    /**
+     * @param string $content
+     */
+    public function setContent($content)
+    {
+        $this->content = $content;
     }
 }
