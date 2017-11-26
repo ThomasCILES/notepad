@@ -2,6 +2,8 @@
 
 namespace AppBundle\Form\Type;
 
+use AppBundle\Entity\Cluster;
+use AppBundle\Entity\Note;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
@@ -9,6 +11,11 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
+/**
+ * Class NoteType
+ *
+ * @package AppBundle\Form\Type
+ */
 class NoteType extends AbstractType
 {
     /**
@@ -21,11 +28,14 @@ class NoteType extends AbstractType
                 'label' => 'app.form.note.title'
             ])
             ->add('content', TextareaType::class, [
-                'label' => 'app.form.note.content'
+                'label'     => 'app.form.note.content',
+                'required'  => false
             ])
             ->add('clusters', CollectionType::class, [
-                'data_class' => 'AppBundle\Entity\Cluster',
-                'label'      => 'app.form.note.clusters'
+                'entry_type'    => ClusterType::class,
+                'allow_add'     => true,
+                'allow_delete'  => true,
+                'label'         => 'app.form.note.clusters'
             ]);
     }
     
@@ -35,7 +45,7 @@ class NoteType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'AppBundle\Entity\Note'
+            'data_class' => Note::class
         ));
     }
 
@@ -46,6 +56,4 @@ class NoteType extends AbstractType
     {
         return 'appbundle_note';
     }
-
-
 }

@@ -2,19 +2,20 @@
 
 namespace AppBundle\Form\Type;
 
+use AppBundle\Entity\Cluster;
+use AppBundle\Entity\Workspace;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\CollectionType;
-use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
- * Class NoteType
+ * Class ClusterType
  *
  * @package AppBundle\Form\Type
  */
-class NoteType extends AbstractType
+class ClusterType extends AbstractType
 {
     /**
      * {@inheritdoc}
@@ -23,16 +24,14 @@ class NoteType extends AbstractType
     {
         $builder
             ->add('title', TextType::class, [
-                'label' => 'app.form.note.title'
+                'label' => 'app.form.cluster.title'
             ])
-            ->add('content', TextareaType::class, [
-                'label'     => 'app.form.note.content',
-                'required'  => false
+            ->add('workspace', EntityType::class, [
+                'class'         => Workspace::class,
+                'choice_label'  => 'title',
+                'label'         => 'app.form.cluster.workspace'
             ])
-            ->add('clusters', CollectionType::class, [
-                'data_class' => 'AppBundle\Entity\Cluster',
-                'label'      => 'app.form.note.clusters'
-            ]);
+        ;
     }
     
     /**
@@ -41,7 +40,7 @@ class NoteType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'AppBundle\Entity\Note'
+            'data_class' => Cluster::class
         ));
     }
 
@@ -50,8 +49,6 @@ class NoteType extends AbstractType
      */
     public function getBlockPrefix()
     {
-        return 'appbundle_note';
+        return 'appbundle_cluster';
     }
-
-
 }
