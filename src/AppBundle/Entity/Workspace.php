@@ -43,6 +43,12 @@ class Workspace implements ResourceInterface
     }
 
     /**
+     * @var string
+     * @ORM\Column(type="string", length=255)
+     */
+    protected $title;
+
+    /**
      * @inheritdoc
      */
     public function getId()
@@ -83,5 +89,21 @@ class Workspace implements ResourceInterface
     public function getClusters()
     {
         return $this->clusters;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getTitle()
+    {
+        return $this->title;
+    }
+
+    /**
+     * @param mixed $title
+     */
+    public function setTitle($title)
+    {
+        $this->title = $title;
     }
 }

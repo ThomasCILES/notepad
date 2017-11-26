@@ -28,6 +28,12 @@ class Cluster implements ResourceInterface
     private $id;
 
     /**
+     * @var string
+     * @ORM\Column(type="string", length=255)
+     */
+    protected $title;
+
+    /**
      * @var \AppBundle\Entity\Workspace
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Workspace", inversedBy="clusters")
      */
@@ -111,5 +117,21 @@ class Cluster implements ResourceInterface
     public function getWorkspace()
     {
         return $this->workspace;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getTitle()
+    {
+        return $this->title;
+    }
+
+    /**
+     * @param mixed $title
+     */
+    public function setTitle($title)
+    {
+        $this->title = $title;
     }
 }
