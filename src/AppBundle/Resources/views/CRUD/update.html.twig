@@ -1,12 +1,12 @@
 {% extends '@App/layout.html.twig' %}
 
-{% block body %}
+{% block content %}
     <h1>{{ 'app.ui.crud.update.title'|trans }}</h1>
 
     <div>
         {{ form_start(form) }}
         {{ form_widget(form) }}
-        <button type="submit">{{ 'app.ui.crud.update.submit'|trans }}</button>
+        <button type="submit" class="btn btn-primary">{{ 'app.ui.crud.update.submit'|trans }}</button>
         {{ form_end(form) }}
     </div>
 {% endblock %}
