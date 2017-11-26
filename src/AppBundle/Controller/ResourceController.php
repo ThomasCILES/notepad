@@ -27,7 +27,8 @@ class ResourceController extends BaseController
         $resources = $this->getRepository($request->get('_entity'))->findAll();
 
         return $this->render('@App/CRUD/list.html.twig', [
-            'resources' => $resources
+            'resources' => $resources,
+            'baseRoute' => str_replace('index', '', $request->get('_route'))
         ]);
     }
 
@@ -50,7 +51,8 @@ class ResourceController extends BaseController
         }
 
         return $this->render('@App/CRUD/show.html.twig', [
-            'resource' => $resource
+            'resource' => $resource,
+            'baseRoute' => str_replace('index', '', $request->get('_route'))
         ]);
     }
 
@@ -75,7 +77,8 @@ class ResourceController extends BaseController
         }
 
         return $this->render('@App/CRUD/create.html.twig', [
-            'form' => $form->createView()
+            'form' => $form->createView(),
+            'baseRoute' => str_replace('index', '', $request->get('_route'))
         ]);
     }
 
@@ -110,7 +113,8 @@ class ResourceController extends BaseController
         }
 
         return $this->render('@App/CRUD/update.html.twig', [
-            'form' => $form->createView()
+            'form' => $form->createView(),
+            'baseRoute' => str_replace('index', '', $request->get('_route'))
         ]);
     }
 
@@ -141,7 +145,8 @@ class ResourceController extends BaseController
         }
 
         return $this->render('@App/CRUD/delete.html.twig', [
-            'form' => $form->createView()
+            'form' => $form->createView(),
+            'baseRoute' => str_replace('index', '', $request->get('_route'))
         ]);
     }
 }

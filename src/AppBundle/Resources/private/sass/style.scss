@@ -3,3 +3,9 @@
 body {
   padding-top: $navbar-height;
 }
+
+.page-header {
+  .btn {
+    float: right;
+  }
+}

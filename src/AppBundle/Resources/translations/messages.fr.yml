@@ -1,19 +1,28 @@
 app:
     ui:
+        label:
+            id: ID
+            title: Titre
+            actions: Actions
         crud:
             create:
                 title: Nouveau
                 submit: Créer
+                button: Créer
             update:
                 title: Modifier
                 submit: Modifier
+                button: Modifier
             delete:
                 title: Supprimer
                 submit: Supprimer
+                button: Supprimer
             show:
                 title: Aperçu
+                button: Aperçu
             list:
                 title: Liste
+                button: Lister
     form:
         cluster:
             title: Titre

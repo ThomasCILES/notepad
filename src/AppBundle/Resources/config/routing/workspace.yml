@@ -2,16 +2,16 @@ app_workspace_index:
     path: /
     defaults:
         _controller: 'AppBundle:Resource:index'
-        _entity: '%app.cluster.class%'
+        _entity: '%app.workspace.class%'
     methods: ['GET']
 
 app_workspace_show:
     path: /{id}/show
     defaults:
         _controller: 'AppBundle:Resource:show'
-        _entity: '%app.cluster.class%'
+        _entity: '%app.workspace.class%'
     requirements:
-        id: \d
+        id: \d+
     methods: ['GET']
 
 app_workspace_create:
@@ -29,7 +29,7 @@ app_workspace_update:
         _entity: '%app.workspace.class%'
         _redirect: 'app_workspace_index'
     requirements:
-        id: \d
+        id: \d+
     methods: ['GET', 'PUT']
 
 app_workspace_delete:
@@ -39,5 +39,5 @@ app_workspace_delete:
         _entity: '%app.workspace.class%'
         _redirect: 'app_workspace_index'
     requirements:
-        id: \d
+        id: \d+
     methods: ['GET', 'DELETE']
