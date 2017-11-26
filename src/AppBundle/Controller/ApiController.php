@@ -5,18 +5,42 @@ use AppBundle\Entity\Cluster;
 use AppBundle\Entity\Note;
 use AppBundle\Entity\Workspace;
 use FOS\RestBundle\Controller\Annotations as Rest;
+use FOS\RestBundle\Controller\Annotations\RequestParam;
+use FOS\RestBundle\Request\ParamFetcher;
 use FOS\RestBundle\View\View;
 use Nelmio\ApiDocBundle\Annotation as Doc;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\Response;
 
 /**
  * Class ResourceController
  *
  * @package AppBundle\Controller
- * @Rest\RouteResource(pluralize=false)
  */
 class ApiController extends Controller
 {
+    /**
+     * @Rest\Post("/workspaces/new")
+     *
+     * @param \FOS\RestBundle\Request\ParamFetcher $fetcher
+     * @RequestParam(name="title")
+     *
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
+    public function postWorkspaceAction(ParamFetcher $fetcher)
+    {
+        $workspace = new Workspace();
+        $workspace->setTitle($fetcher->get('title'));
+
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($workspace);
+        $em->flush();
+
+        $view = View::create()
+            ->setStatusCode(Response::HTTP_CREATED);
+        return $this->getViewHandler()->handle($view);
+    }
+
     /**
      * @Doc\ApiDoc(
      *     section="Workspaces",
