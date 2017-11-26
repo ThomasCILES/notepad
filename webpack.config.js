@@ -1,9 +1,9 @@
 const Encore  = require('@symfony/webpack-encore');
 const path    = require('path');
 
-const assets_path   = path.resolve('./assets');
-const output_path   = (Encore.isProduction()) ? path.resolve('./build') : path.resolve('./build');
-const public_path   = (Encore.isProduction()) ? '/build' : '/build';
+const assets_path   = path.resolve('./src/AppBundle/Resources/private');
+const output_path   = (Encore.isProduction()) ? path.resolve('./src/AppBundle/Resources/public') : path.resolve('./src/AppBundle/Resources/public');
+const public_path   = (Encore.isProduction()) ? '/public' : '/public';
 const sass_path     = path.join(assets_path, './sass');
 const js_path       = path.join(assets_path, './js');
 
@@ -30,7 +30,7 @@ Encore
     .enableSourceMaps(!Encore.isProduction())
 
     // create hashed filenames (e.g. app.abc123.css)
-    .enableVersioning(Encore.isProduction())
+    .enableVersioning(false)
 ;
 
 var config = Encore.getWebpackConfig();

@@ -17,5 +17,8 @@
     "encore.watch": "encore dev --watch"
   },
   "author": "Thomas CILES",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "bootstrap-sass": "^3.3.7"
+  }
 }
