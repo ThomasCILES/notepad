@@ -3,13 +3,13 @@ const path    = require('path');
 
 const assets_path   = path.resolve('./src/AppBundle/Resources/private');
 const output_path   = (Encore.isProduction()) ? path.resolve('./src/AppBundle/Resources/public') : path.resolve('./src/AppBundle/Resources/public');
-const public_path   = (Encore.isProduction()) ? '/public' : '/public';
+const public_path   = (Encore.isProduction()) ? '/bundles/app' : '/public';
 const sass_path     = path.join(assets_path, './sass');
 const js_path       = path.join(assets_path, './js');
 
 Encore
     // empty the outputPath dir before each build
-    .cleanupOutputBeforeBuild()
+    // .cleanupOutputBeforeBuild()
 
     // directory where all compiled assets will be stored
     .setOutputPath(output_path)
@@ -31,10 +31,13 @@ Encore
 
     // create hashed filenames (e.g. app.abc123.css)
     .enableVersioning(false)
-;
+
+    .setManifestKeyPrefix('bundles/app');
+
 
 var config = Encore.getWebpackConfig();
 config.watchOptions = { poll: true, ignored: /node_modules/ };
+
 if (config.devServer) {
     config.devServer.watchContentBase = true;
 }
