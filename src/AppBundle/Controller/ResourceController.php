@@ -62,17 +62,16 @@ class ResourceController extends BaseController
     public function createAction(Request $request)
     {
         $formClass = $request->get('_form');
-
         if (null === $formClass || !class_exists($formClass)) {
             throw $this->formNotFound($formClass);
         }
 
-        $form = $this->createForm($formClass, null, [ 'method' => Request::METHOD_POST ]);
-        if ($form->handleRequest($request)->isSubmitted() && $form->isValid()) {
-            $this->update($form->getData());
+        $form    = $this->createForm($formClass, null, [ 'method' => Request::METHOD_POST ]);
+        $handler = $this->get('app.form.handler');
 
-            $redirectRoute = $request->get('_redirect', $request->get('_route'));
-            return $this->redirectToRoute($redirectRoute);
+        if ($handler->handle($form)) {
+            $this->addFlash('success', 'app.crud.flash.success.create');
+            return $handler->getResponse();
         }
 
         return $this->render('@App/CRUD/create.html.twig', [
@@ -88,9 +87,8 @@ class ResourceController extends BaseController
      */
     public function editAction(Request $request, $id)
     {
-        $resourceClass = $request->get('_entity');
         $formClass     = $request->get('_form');
-
+        $resourceClass = $request->get('_entity');
         if (null === $resourceClass || !class_exists($resourceClass)) {
             throw $this->entityNotFound($resourceClass, $id);
         }
@@ -103,12 +101,12 @@ class ResourceController extends BaseController
             throw $this->entityNotFound($resourceClass, $id);
         }
 
-        $form   = $this->createForm($formClass, $resource, [ 'method' => Request::METHOD_PUT ]);
-        if ($form->handleRequest($request)->isSubmitted() && $form->isValid()) {
-            $this->update($form->getData());
-
-            $redirectRoute = $request->get('_redirect', $request->get('_route'));
-            return $this->redirectToRoute($redirectRoute);
+        $form    = $this->createForm($formClass, $resource, [ 'method' => Request::METHOD_PUT ]);
+        $handler = $this->get('app.form.handler');
+        
+        if ($handler->handle($form)) {
+            $this->addFlash('success', 'app.crud.flash.success.update');
+            return $handler->getResponse();
         }
 
         return $this->render('@App/CRUD/update.html.twig', [
@@ -125,8 +123,6 @@ class ResourceController extends BaseController
     public function deleteAction(Request $request, $id)
     {
         $resourceClass = $request->get('_entity');
-
-
         if (null === $resourceClass || !class_exists($resourceClass)) {
             throw $this->entityNotFound($resourceClass, $id);
         }
@@ -136,12 +132,12 @@ class ResourceController extends BaseController
             throw $this->entityNotFound($resourceClass, $id);
         }
 
-        $form   = $this->createForm(DeleteType::class, $resource, [ 'method' => Request::METHOD_DELETE ]);
-        if ($form->handleRequest($request)->isSubmitted() && $form->isValid()) {
-            $this->remove($form->getData());
+        $form    = $this->createForm(DeleteType::class, $resource, [ 'method' => Request::METHOD_DELETE ]);
+        $handler = $this->get('app.form.handler');
 
-            $redirectRoute = $request->get('_redirect', $request->get('_route'));
-            return $this->redirectToRoute($redirectRoute);
+        if ($handler->handle($form)) {
+            $this->addFlash('success', 'app.crud.flash.success.delete');
+            return $handler->getResponse();
         }
 
         return $this->render('@App/CRUD/delete.html.twig', [
