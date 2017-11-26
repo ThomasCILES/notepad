@@ -1,0 +1,21 @@
+{
+  "name": "webpack",
+  "version": "1.0.0",
+  "description": "Webpack configuration",
+  "devDependencies": {
+    "@symfony/webpack-encore": "^0.16",
+    "babel-loader": "^7.1.2",
+    "babel-preset-env": "^1.6.1",
+    "node-sass": "^4.5.3",
+    "postcss-loader": "^2.0.6",
+    "sass-loader": "^6.0.6"
+  },
+  "scripts": {
+    "encore.dev": "encore dev",
+    "encore.dev-server": "encore dev-server --hot",
+    "encore.prod": "encore production",
+    "encore.watch": "encore dev --watch"
+  },
+  "author": "Thomas CILES",
+  "license": "ISC"
+}
