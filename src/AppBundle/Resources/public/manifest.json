@@ -1,9 +1,9 @@
 {
-  "public/app.js": "/public/app.js",
-  "public/fonts/glyphicons-halflings-regular.eot": "/public/fonts/glyphicons-halflings-regular.f4769f9b.eot",
-  "public/fonts/glyphicons-halflings-regular.ttf": "/public/fonts/glyphicons-halflings-regular.e18bbf61.ttf",
-  "public/fonts/glyphicons-halflings-regular.woff": "/public/fonts/glyphicons-halflings-regular.fa277232.woff",
-  "public/fonts/glyphicons-halflings-regular.woff2": "/public/fonts/glyphicons-halflings-regular.448c34a5.woff2",
-  "public/images/glyphicons-halflings-regular.svg": "/public/images/glyphicons-halflings-regular.89889688.svg",
-  "public/style.css": "/public/style.css"
+  "bundles/app/app.js": "/bundles/app/app.js",
+  "bundles/app/fonts/glyphicons-halflings-regular.eot": "/bundles/app/fonts/glyphicons-halflings-regular.f4769f9b.eot",
+  "bundles/app/fonts/glyphicons-halflings-regular.ttf": "/bundles/app/fonts/glyphicons-halflings-regular.e18bbf61.ttf",
+  "bundles/app/fonts/glyphicons-halflings-regular.woff": "/bundles/app/fonts/glyphicons-halflings-regular.fa277232.woff",
+  "bundles/app/fonts/glyphicons-halflings-regular.woff2": "/bundles/app/fonts/glyphicons-halflings-regular.448c34a5.woff2",
+  "bundles/app/images/glyphicons-halflings-regular.svg": "/bundles/app/images/glyphicons-halflings-regular.89889688.svg",
+  "bundles/app/style.css": "/bundles/app/style.css"
 }
