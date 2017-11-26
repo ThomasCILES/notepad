@@ -1,8 +1,5 @@
-AppBundle\Entity\Note:
+AppBundle\Entity\Workspace:
     properties:
         title:
-            - NotBlank: ~
-            - Type: string
-        content:
             - NotBlank: ~
             - Type: string

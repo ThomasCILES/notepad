@@ -1,9 +1,9 @@
 parameters:
-    app.workspace.class:
+    app.workspace.class: 'AppBundle\Entity\Workspace'
     app.workspace.form: 'AppBundle\Form\Type\WorkspaceType'
 
-    app.cluster.class:
+    app.cluster.class: 'AppBundle\Entity\Cluster'
     app.cluster.form: 'AppBundle\Form\Type\ClusterType'
 
-    app.note.class:
+    app.note.class: 'AppBundle\Entity\Note'
     app.note.form: 'AppBundle\Form\Type\NoteType'

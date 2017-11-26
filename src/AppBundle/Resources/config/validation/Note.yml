@@ -3,6 +3,9 @@ AppBundle\Entity\Note:
         title:
             - NotBlank: ~
             - Type: string
-        content:
-            - NotBlank: ~
+        title:
             - Type: string
+        clusters:
+            - Valid: ~
+            - Count:
+                min: 1

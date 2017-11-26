@@ -1,4 +1,4 @@
-AppBundle\Entity\Workspace:
+AppBundle\Entity\Cluster:
     properties:
         title:
             - NotBlank: ~
