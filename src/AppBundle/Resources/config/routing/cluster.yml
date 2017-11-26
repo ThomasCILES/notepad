@@ -1,0 +1,27 @@
+app_note_index:
+    path: /
+    defaults:
+        _controller: '@AppBundle:Resource:index'
+    methods: ['GET']
+
+app_note_create:
+    path: /new
+    defaults:
+        _controller: '@AppBundle:Resource:create'
+    methods: ['GET', 'POST']
+
+app_note_update:
+    path: /{id}/update
+    defaults:
+        _controller: '@AppBundle:Resource:update'
+    requirements:
+        id: \d
+    methods: ['GET', 'PUT']
+
+app_note_delete:
+    path: /{id}/delete
+    defaults:
+        _controller: '@AppBundle:Resource:delete'
+    requirements:
+        id: \d
+    methods: ['DELETE']

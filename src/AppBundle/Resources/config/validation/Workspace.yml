@@ -1,0 +1,8 @@
+AppBundle\Entity\Note:
+    properties:
+        title:
+            - NotBlank: ~
+            - Type: string
+        content:
+            - NotBlank: ~
+            - Type: string
