@@ -27,6 +27,7 @@ app_workspace_update:
         _controller: 'AppBundle:Resource:edit'
         _form: '%app.workspace.form%'
         _entity: '%app.workspace.class%'
+        _redirect: 'app_workspace_index'
     requirements:
         id: \d
     methods: ['GET', 'PUT']
@@ -36,6 +37,7 @@ app_workspace_delete:
     defaults:
         _controller: 'AppBundle:Resource:delete'
         _entity: '%app.workspace.class%'
+        _redirect: 'app_workspace_index'
     requirements:
         id: \d
-    methods: ['DELETE']
+    methods: ['GET', 'DELETE']
