@@ -6,6 +6,7 @@
  */
 
 namespace AppBundle\Entity;
+use AppBundle\Model\ResourceInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -15,7 +16,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @package AppBundle\Entity
  * @ORM\Entity()
  */
-class Cluster
+class Cluster implements ResourceInterface
 {
     /**
      * @var int
@@ -47,9 +48,7 @@ class Cluster
     }
 
     /**
-     * Get id
-     *
-     * @return integer
+     * @inheritdoc
      */
     public function getId()
     {

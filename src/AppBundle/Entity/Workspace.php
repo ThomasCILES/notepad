@@ -7,6 +7,7 @@
 
 namespace AppBundle\Entity;
 
+use AppBundle\Model\ResourceInterface;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 
@@ -16,7 +17,7 @@ use Doctrine\Common\Collections\ArrayCollection;
  * @package AppBundle\Entity
  * @ORM\Entity()
  */
-class Workspace
+class Workspace implements ResourceInterface
 {
     /**
      * @var int
@@ -42,7 +43,7 @@ class Workspace
     }
 
     /**
-     * @return int
+     * @inheritdoc
      */
     public function getId()
     {
