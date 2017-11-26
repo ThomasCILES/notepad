@@ -7,3 +7,12 @@ parameters:
 
     app.note.class: 'AppBundle\Entity\Note'
     app.note.form: 'AppBundle\Form\Type\NoteType'
+
+services:
+    app.resource.manager:
+        class: AppBundle\Manager\ResourceManager
+        arguments: ['@doctrine.orm.entity_manager']
+
+    app.form.handler:
+        class: AppBundle\Form\Handler\ResourceFormHandler
+        arguments: ['@request_stack', '@app.resource.manager', '@router']
