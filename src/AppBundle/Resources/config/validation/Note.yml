@@ -1,0 +1,11 @@
+AppBundle\Entity\Note:
+    properties:
+        title:
+            - NotBlank: ~
+            - Type: string
+        title:
+            - Type: string
+        clusters:
+            - Valid: ~
+            - Count:
+                min: 1

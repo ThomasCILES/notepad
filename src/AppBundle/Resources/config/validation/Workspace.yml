@@ -1,0 +1,5 @@
+AppBundle\Entity\Workspace:
+    properties:
+        title:
+            - NotBlank: ~
+            - Type: string

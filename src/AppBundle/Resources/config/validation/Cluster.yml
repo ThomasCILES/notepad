@@ -1,0 +1,5 @@
+AppBundle\Entity\Cluster:
+    properties:
+        title:
+            - NotBlank: ~
+            - Type: string

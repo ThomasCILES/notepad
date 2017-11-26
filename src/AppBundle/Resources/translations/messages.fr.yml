@@ -1,0 +1,31 @@
+app:
+    ui:
+        crud:
+            create:
+                title: Nouveau
+                submit: Créer
+            update:
+                title: Modifier
+                submit: Modifier
+            delete:
+                title: Supprimer
+                submit: Supprimer
+            show:
+                title: Aperçu
+            list:
+                title: Liste
+    form:
+        cluster:
+            title: Titre
+            workspace: Workspace
+        workspace:
+            title: Titre
+        note:
+            title: Titre
+            content: Contenu
+            clusters: Catégories
+    error:
+        form:
+            not_found: Error %form% not found.
+        entity:
+            not_found: Error %entity% id %id% not found.
