@@ -1,0 +1,11 @@
+app_workspace:
+    resource: './routing/workspace.yml'
+    prefix: /workspace
+
+app_cluster:
+    resource: './routing/cluster.yml'
+    prefix: /cluster
+
+app_note:
+    resource: './routing/note.yml'
+    prefix: /note
