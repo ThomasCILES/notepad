@@ -27,6 +27,7 @@ app_cluster_update:
         _controller: 'AppBundle:Resource:edit'
         _form: '%app.cluster.form%'
         _entity: '%app.cluster.class%'
+        _redirect: 'app_cluster_index'
     requirements:
         id: \d
     methods: ['GET', 'PUT']
@@ -36,6 +37,7 @@ app_cluster_delete:
     defaults:
         _controller: 'AppBundle:Resource:delete'
         _entity: '%app.cluster.class%'
+        _redirect: 'app_cluster_index'
     requirements:
         id: \d
-    methods: ['DELETE']
+    methods: ['GET', 'DELETE']

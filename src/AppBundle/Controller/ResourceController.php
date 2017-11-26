@@ -71,7 +71,8 @@ class ResourceController extends BaseController
         if ($form->handleRequest($request)->isSubmitted() && $form->isValid()) {
             $this->update($form->getData());
 
-            return $this->redirectToRoute($request->get('_route'));
+            $redirectRoute = $request->get('_redirect', $request->get('_route'));
+            return $this->redirectToRoute($redirectRoute);
         }
 
         return $this->render('@App/CRUD/create.html.twig', [
@@ -106,7 +107,8 @@ class ResourceController extends BaseController
         if ($form->handleRequest($request)->isSubmitted() && $form->isValid()) {
             $this->update($form->getData());
 
-            return $this->redirectToRoute($request->get('_route'), [ 'id' => $id ]);
+            $redirectRoute = $request->get('_redirect', $request->get('_route'));
+            return $this->redirectToRoute($redirectRoute);
         }
 
         return $this->render('@App/CRUD/update.html.twig', [
@@ -124,6 +126,7 @@ class ResourceController extends BaseController
     {
         $resourceClass = $request->get('_entity');
 
+
         if (null === $resourceClass || !class_exists($resourceClass)) {
             throw $this->entityNotFound($resourceClass, $id);
         }
@@ -137,9 +140,12 @@ class ResourceController extends BaseController
         if ($form->handleRequest($request)->isSubmitted() && $form->isValid()) {
             $this->remove($form->getData());
 
-            return $this->redirectToRoute($request->get('_route'));
+            $redirectRoute = $request->get('_redirect', $request->get('_route'));
+            return $this->redirectToRoute($redirectRoute);
         }
 
-        return $this->render('@App/CRUD/delete.html.twig', []);
+        return $this->render('@App/CRUD/delete.html.twig', [
+            'form' => $form->createView()
+        ]);
     }
 }

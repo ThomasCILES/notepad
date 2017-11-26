@@ -27,6 +27,7 @@ app_note_update:
         _controller: 'AppBundle:Resource:edit'
         _form: '%app.note.form%'
         _entity: '%app.note.class%'
+        _redirect: 'app_note_index'
     requirements:
         id: \d
     methods: ['GET', 'PUT']
@@ -36,6 +37,7 @@ app_note_delete:
     defaults:
         _controller: 'AppBundle:Resource:delete'
         _entity: '%app.note.class%'
+        _redirect: 'app_note_index'
     requirements:
         id: \d
-    methods: ['DELETE']
+    methods: ['GET', 'DELETE']
